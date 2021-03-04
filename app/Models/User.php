@@ -3,13 +3,16 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Traits\HasJWT;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, SoftDeletes, HasJWT;
 
     /**
      * The attributes that are mass assignable.
@@ -32,6 +35,10 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    // protected $with = [
+    //     'products'
+    // ];
+
     /**
      * The attributes that should be cast to native types.
      *
@@ -40,4 +47,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    
 }

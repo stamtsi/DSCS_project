@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +12,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix('/{locale?}')->where(['locale' => 'en|fil'])->group(function () {
+    Route::name('backoffice.')->group(function () {
+        Route::get('/', function () {
+            return view('__backoffice.welcome');
+        })->name('welcome');
+    });
 });
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
