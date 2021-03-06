@@ -15,6 +15,8 @@ Route::namespace('Api')->name('api.')->group(function () {
     Route::namespace('V1')->name('v1.')->prefix('v1')->group(function () {
         Route::namespace('Auth')->name('auth.')->prefix('auth')->group(function () {
             Route::post('identify', 'SessionController@identify')->name('identify');
+            Route::post('register-check', 'SessionController@registerCheck')->name('register.check');
+            Route::post('register', 'SessionController@register')->name('register');
             Route::post('signin', 'SessionController@signin')->name('signin');
 
             Route::middleware('auth:api')->group(function () {

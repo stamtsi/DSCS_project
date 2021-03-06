@@ -60,13 +60,13 @@ const UserAvatar = props => {
             style={{
                 fontSize: 17,
                 backgroundColor: RandomUtils.color(
-                    user.firstname.length -
+                    user.name.length -
                         user.created_at.charAt(user.created_at.length - 2),
                 ),
             }}
         >
             <Typography>
-                {`${user.firstname.charAt(0)}${user.lastname.charAt(0)}`}
+                {`${user.name.charAt(0)}${user.name.split(' ')[user.name.split(' ').length-1].charAt(0)}`}
             </Typography>
         </Avatar>
     );

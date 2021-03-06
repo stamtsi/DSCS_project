@@ -1,3 +1,3 @@
 export default {
-    name: 'LaReact Admin',
+    name: 'REMENU',
 };

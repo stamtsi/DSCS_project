@@ -35,6 +35,56 @@ class SessionController extends Controller
         );
     }
 
+
+    /**
+     * Identify if the given email exists.
+     *
+     * @param Illuminate\Http\Request
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function registerCheck(Request $request) : JsonResponse
+    {
+        $request->validate([
+            'email' => "required|unique:users",
+        ]);
+
+        return response()->json(
+            $request->email,
+        );
+    }
+
+        /**
+     * Identify if the given email exists.
+     *
+     * @param Illuminate\Http\Request
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function register(Request $request) : JsonResponse
+    {
+        $request->validate([
+            'email' => "required|unique:users",
+            'name'  => "required|string",
+            'password' => 'required|min:8'
+        ]);
+        
+        $user = new User([
+            'email'=>$request->email,
+            'name'=>$request->name,
+            'password' => bcrypt($request->password),
+            'activation_token'=> null
+        ]);
+        
+        if($user->save()){
+            $token = $this->attempt($request);
+            return $this->respondWithToken($token);
+        }
+        
+        if ($token = $this->attempt($request)) {
+            return $this->respondWithToken($token);
+        }
+    }
     /**
      * Authenticate the user and give the token data.
      *

@@ -62,7 +62,7 @@ const Auth = props => {
                                 alt="company-logo"
                                 className={props.classes.logo}
                             /> */}
-                            ZERO FOOD WASTE
+                            REMENU
                         </Grid>
 
                         <Grid

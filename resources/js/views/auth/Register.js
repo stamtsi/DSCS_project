@@ -31,7 +31,8 @@ function Register(props) {
 
     const [loading, setLoading] = useState(false);
     const [identified, setIdentified] = useState(false);
-    const [passwordVisible, passwordConfirmationVisible, setPasswordVisibility, setPasswordConfirmationVisibility] = useState(false);
+    const [passwordVisible, setPasswordVisibility] = useState(false);
+    const [passwordConfirmationVisible, setPasswordConfirmationVisibility] = useState(false);
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState({});
 
@@ -63,20 +64,20 @@ function Register(props) {
     };
 
     /**
-     * This should send an API request to identify the user.
+     * This should send an API request to check the email.
      *
      * @param {string} email
      * @param {object} form
      *
      * @return {undefined}
      */
-    const identify = async (email = null, { setErrors }) => {
+    const registerCheck = async (email = null, { setErrors }) => {
         setLoading(true);
         try {
-            const response = await axios.post('/api/v1/auth/identify', {
+            const response = await axios.post('/api/v1/auth/register-check', {
                 email,
             });
-
+            
             const { history, location } = props;
 
             setIdentified(true);
@@ -120,12 +121,14 @@ function Register(props) {
         setLoading(true);
 
         try {
-            const { password } = values;
+            const { password, name } = values;
 
-            const response = await axios.post('/api/v1/auth/signin', {
+            const response = await axios.post('/api/v1/auth/register', {
                 email,
                 password,
+                name
             });
+            console.log(response);
 
             authenticate(JSON.stringify(response.data));
 
@@ -158,7 +161,7 @@ function Register(props) {
 
         try {
             if (!identified) {
-                await identify(values.email, form);
+                await registerCheck(values.email, form);
 
                 return;
             }
@@ -189,7 +192,7 @@ function Register(props) {
         const q = UrlUtils.queryParams(location.search);
 
         if (q.hasOwnProperty('email') && q.email !== '') {
-            identify(q.email, {});
+            registerCheck(q.email, {});
         }
     }, [identified]);
 
@@ -213,7 +216,7 @@ function Register(props) {
                         deleteIcon={<ExpandMoreIcon />}
                     />
                 ) : (
-                    Lang.get('navigation.signin_guest_subtitle')
+                    Lang.get('navigation.register_guest_subtitle')
                 )
             }
             loading={loading}
@@ -224,17 +227,17 @@ function Register(props) {
                     email,
                     password: '',
                     password_confirmation: '',
-                    name: ''
+                    first_name: '',
+                    last_name: ''
                 }}
                 onSubmit={handleRegisterSubmit}
                 validationSchema={Yup.object().shape({
-                    [!identified
-                        ? 'email'
-                        : 'password']: Yup.string().required(
-                        `The ${
-                            !identified ? 'email' : 'password'
-                        } field is required`,
-                    ),
+                    name: Yup.string()
+                    .min(2, 'Too Short!')
+                    .max(70, 'Too Long!')
+                    .required('Required'),
+                    password_confirmation: Yup.string()
+                    .oneOf([Yup.ref('password'), null], 'Passwords must match') 
                 })}
             >
                 {({ values, handleChange, errors, isSubmitting }) => (
@@ -345,8 +348,8 @@ function Register(props) {
                                                     ? 'text'
                                                     : 'password'
                                             }
-                                            id="password-confirmation"
-                                            name="password-confirmation"
+                                            id="password_confirmation"
+                                            name="password_confirmation"
                                             label="Password Confirmation"
                                             placeholder="secret"
                                             value={values.password_confirmation}

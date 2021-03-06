@@ -6,13 +6,8 @@ const Footer = props => (
     <footer {...props} className={props.classes.root}>
         <Typography>
             {Lang.get('navigation.citation')}{' '}
-            <Link
-                href="https://github.com/palonponjovertlota"
-                target="_blank"
-                rel="noreferrer"
-            >
-                @palonponjovertlota
-            </Link>
+            DSCS Group A1
+
         </Typography>
     </footer>
 );
