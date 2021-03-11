@@ -76,80 +76,6 @@ UserAvatar.propTypes = {
     user: PropTypes.object.isRequired,
 };
 
-const LocaleMenu = props => {
-    const { classes, localeMenuOpen, onLocaleMenuToggle } = props;
-
-    return (
-        <Popper
-            open={localeMenuOpen}
-            className={classes.navLinkMenu}
-            transition
-            disablePortal
-        >
-            {({ TransitionProps, placement }) => (
-                <Grow
-                    {...TransitionProps}
-                    style={{
-                        transformOrigin:
-                            placement === 'bottom'
-                                ? 'center top'
-                                : 'center bottom',
-                    }}
-                >
-                    <Paper>
-                        <ClickAwayListener onClickAway={onLocaleMenuToggle}>
-                            <MenuList>
-                                <MenuItem
-                                    onClick={() => {
-                                        if (
-                                            window.location.pathname.indexOf(
-                                                '/en',
-                                            ) === -1
-                                        ) {
-                                            window.location.href = '/en';
-                                        }
-                                    }}
-                                >
-                                    <ListItemIcon
-                                        className={classes.navLinkMenuItemIcon}
-                                    >
-                                        <UsIcon />
-                                    </ListItemIcon>
-
-                                    <Typography>
-                                        {Lang.get('navigation.english')}
-                                    </Typography>
-                                </MenuItem>
-
-                                <MenuItem
-                                    onClick={() => {
-                                        if (
-                                            window.location.pathname.indexOf(
-                                                '/fil',
-                                            ) === -1
-                                        ) {
-                                            window.location.href = '/fil';
-                                        }
-                                    }}
-                                >
-                                    <ListItemIcon
-                                        className={classes.navLinkMenuItemIcon}
-                                    >
-                                        <PhIcon />
-                                    </ListItemIcon>
-
-                                    <Typography>
-                                        {Lang.get('navigation.filipino')}
-                                    </Typography>
-                                </MenuItem>
-                            </MenuList>
-                        </ClickAwayListener>
-                    </Paper>
-                </Grow>
-            )}
-        </Popper>
-    );
-};
 
 const AccountMenu = props => {
     const { user, handleLock, handleSignOut } = useContext(AppContext);
@@ -221,20 +147,6 @@ const AccountMenu = props => {
                                 </MenuItem>
 
                                 <Divider />
-
-                                <MenuItem
-                                    onClick={() => handleLock(user.username)}
-                                >
-                                    <ListItemIcon
-                                        className={classes.navLinkMenuItemIcon}
-                                    >
-                                        <LockIcon />
-                                    </ListItemIcon>
-
-                                    <Typography>
-                                        {Lang.get('navigation.lock')}
-                                    </Typography>
-                                </MenuItem>
 
                                 <MenuItem onClick={handleSignOut}>
                                     <ListItemIcon
@@ -525,72 +437,6 @@ function Header(props) {
                         </Hidden>
 
                         <Grid item xs />
-
-                        <Grid item>
-                            <Tooltip title={Lang.get('navigation.github')}>
-                                <IconButton
-                                    href="https://github.com/palonponjovertlota/lra"
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    color="inherit"
-                                >
-                                    <GitHubIcon />
-                                </IconButton>
-                            </Tooltip>
-                        </Grid>
-
-                        {monitoringEnabled && (
-                            <Grid item>
-                                <Tooltip
-                                    title={Lang.get('navigation.monitoring')}
-                                >
-                                    <IconButton
-                                        href="/telescope"
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        color="inherit"
-                                    >
-                                        <UpdateIcon />
-                                    </IconButton>
-                                </Tooltip>
-                            </Grid>
-                        )}
-
-                        <Grid item>
-                            <Tooltip
-                                title={Lang.get('navigation.notifications')}
-                            >
-                                <IconButton color="inherit">
-                                    <Badge
-                                        badgeContent={
-                                            new Date().getMinutes() + user.id
-                                        }
-                                        color="secondary"
-                                    >
-                                        <NotificationsIcon />
-                                    </Badge>
-                                </IconButton>
-                            </Tooltip>
-                        </Grid>
-
-                        <Grid item>
-                            <Tooltip title={Lang.get('navigation.locale')}>
-                                <div className={classes.navLinkMenuWrapper}>
-                                    <IconButton
-                                        aria-owns={
-                                            localeMenuOpen && 'material-appbar'
-                                        }
-                                        aria-haspopup="true"
-                                        onClick={onLocaleMenuToggle}
-                                        color="inherit"
-                                    >
-                                        <LanguageIcon />
-                                    </IconButton>
-
-                                    <LocaleMenu {...props} />
-                                </div>
-                            </Tooltip>
-                        </Grid>
 
                         <Grid item>
                             <Tooltip

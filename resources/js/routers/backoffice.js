@@ -1,24 +1,23 @@
 import { Home } from '../views/__backoffice';
 import * as Settings from '../views/__backoffice/settings';
-import * as Users from '../views/__backoffice/users';
+import * as Products from '../views/__backoffice/products';
 
 const resources = [
     {
-        name: 'users.index',
-        path: '/users',
-        component: Users.List,
+        name: 'products.edit',
+        path: '/products/:id/edit',
+        component: Products.Edit,
+    },
+    {
+        name: 'products.index',
+        path: '/products',
+        component: Products.List,
     },
 
     {
-        name: 'users.create',
-        path: '/users/create',
-        component: Users.Create,
-    },
-
-    {
-        name: 'users.edit',
-        path: '/users/:id/edit',
-        component: Users.Edit,
+        name: 'products.create',
+        path: '/products/create',
+        component: Products.Create,
     },
 ].map(route => {
     route.name = `resources.${route.name}`;

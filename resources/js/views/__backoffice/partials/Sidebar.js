@@ -19,10 +19,10 @@ import {
 import {
     ChevronLeft as ChevronLeftIcon,
     ChevronRight as ChevronRightIcon,
-    Dashboard as DashboardIcon,
+    Fastfood as FastfoodIcon,
     ExpandLess as ExpandLessIcon,
-    People as PeopleIcon,
-    Security as SecurityIcon,
+    Kitchen as KitchenIcon,
+    LocalDining as LocalDiningIcon,
     ShowChart as ShowChartIcon,
 } from '@material-ui/icons';
 
@@ -57,10 +57,11 @@ function Sidebar(props) {
     const [initialized, setInitialized] = useState(false);
 
     const homeLink = {
-        name: Lang.get('navigation.dashboard'),
+        name: Lang.get('navigation.recipes'),
         icon: (
-            <Tooltip title={minimized ? Lang.get('navigation.dashboard') : ''}>
-                <DashboardIcon />
+            <Tooltip title={minimized ? Lang.get('navigation.recipes') : ''}>
+                <LocalDiningIcon />
+
             </Tooltip>
         ),
         path: NavigationUtils.route('backoffice.home'),
@@ -71,46 +72,21 @@ function Sidebar(props) {
             name: Lang.get('navigation.resources'),
             id: 'resources',
             links: [
+                
                 {
-                    name: Lang.get('navigation.users'),
+                    name: Lang.get('navigation.products'),
                     icon: (
                         <Tooltip
                             title={
-                                minimized ? Lang.get('navigation.users') : ''
+                                minimized ? Lang.get('navigation.products') : ''
                             }
                         >
-                            <PeopleIcon />
+                            <FastfoodIcon />
                         </Tooltip>
                     ),
                     path: NavigationUtils.route(
-                        'backoffice.resources.users.index',
-                    ),
-                },
-
-                {
-                    name: Lang.get('navigation.roles'),
-                    icon: (
-                        <Tooltip
-                            title={
-                                minimized ? Lang.get('navigation.roles') : ''
-                            }
-                        >
-                            <SecurityIcon />
-                        </Tooltip>
-                    ),
-                    path: null,
-                },
-            ],
-        },
-
-        {
-            name: 'Analytics',
-            id: 'analytics',
-            links: [
-                {
-                    name: 'Traffic',
-                    icon: <ShowChartIcon />,
-                    path: null,
+                        'backoffice.resources.products.index',
+                    )
                 },
             ],
         },

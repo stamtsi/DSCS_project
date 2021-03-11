@@ -368,16 +368,9 @@ function Account(props) {
     const renderCredentialsForm = (
         <Formik
             initialValues={{
-                username: user.username,
                 email: user.email,
             }}
             validationSchema={Yup.object().shape({
-                username: Yup.string().required(
-                    Lang.get('validation.required', {
-                        attribute: 'username',
-                    }),
-                ),
-
                 email: Yup.string()
                     .required(
                         Lang.get('validation.required', {
@@ -399,24 +392,6 @@ function Account(props) {
                         Login Credentials
                     </Typography>
 
-                    <TextField
-                        id="username"
-                        name="username"
-                        label="Username"
-                        placeholder="Enter your username"
-                        value={values.username}
-                        onChange={handleChange}
-                        fullWidth
-                        margin="dense"
-                        error={
-                            submitCount > 0 && errors.hasOwnProperty('username')
-                        }
-                        helperText={
-                            submitCount > 0 &&
-                            errors.hasOwnProperty('username') &&
-                            errors.username
-                        }
-                    />
 
                     <TextField
                         id="email"
