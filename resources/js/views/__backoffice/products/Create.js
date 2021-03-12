@@ -23,15 +23,7 @@ function Create(props) {
     const [product, setProduct] = useState({});
     const [message, setMessage] = useState({});
 
-    /**
-     * This should return back to the previous step.
-     *
-     * @return {undefined}
-     */
-    const handleBack = () => {
-        setActiveStep(activeStep - 1);
-    };
-
+   
     /**
      * Handle form submit, this should send an API response
      * to create a product.
@@ -45,10 +37,7 @@ function Create(props) {
     const handleSubmit = async (values, { setSubmitting, setErrors }) => {
         setSubmitting(false);
 
-        // Stop here as it is the last step...
-        if (activeStep === 2) {
-            return;
-        }
+       
 
         setLoading(true);
 
@@ -56,12 +45,7 @@ function Create(props) {
             let previousValues = {};
 
             // Merge the form values here.
-            if (activeStep === 1) {
-                previousValues = formValues.reduce((prev, next) => {
-                    return { ...prev, ...next };
-                });
-            }
-
+    
             // Instruct the API the current step.
             values.step = activeStep;
 
@@ -71,20 +55,19 @@ function Create(props) {
             let newFormValues = [...formValues];
             newFormValues[activeStep] = values;
 
-            if (activeStep === 1) {
-                setMessage({
-                    type: 'success',
-                    body: Lang.get('resources.created', {
-                        name: 'Product',
-                    }),
-                    closed: () => setMessage({}),
-                });
-            }
+           
+            setMessage({
+                type: 'success',
+                body: Lang.get('resources.created', {
+                    name: 'Product',
+                }),
+                closed: () => setMessage({}),
+            });
+
 
             setLoading(false);
             setFormValues(newFormValues);
             setProduct(product);
-            setActiveStep(activeStep + 1);
         } catch (error) {
             if (!error.response) {
                 throw new Error('Unknown error');

@@ -51,14 +51,6 @@ Route::namespace('Api')->name('api.')->group(function () {
                 });
             });
 
-        //     Route::prefix('users')->name('users.')->group(function () {
-        //         Route::patch('{user}/restore', 'UsersController@restore')->name('restore');
-
-        //         Route::prefix('{user}/avatar')->name('avatar.')->group(function () {
-        //             Route::post('/', 'UsersController@storeAvatar')->name('store');
-        //             Route::delete('/', 'UsersController@destroyAvatar')->name('destroy');
-        //         });
-        //     });
         });
     });
 });

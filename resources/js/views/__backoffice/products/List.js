@@ -195,30 +195,30 @@ function List(props) {
 
         try {
             const pagination = await Product.delete(resourceId);
-
+            const products = await Product.paginated();
             setLoading(false);
-            setPagination(pagination);
             setAlert({});
+
             setMessage({
                 type: 'success',
                 body: Lang.get('resources.deleted', {
                     name: 'Product',
                 }),
                 closed: () => setMessage({}),
-                actionText: Lang.get('actions.undo'),
-                action: () => restoreProduct(resourceId),
+                
             });
+            setPagination(products);
+
         } catch (error) {
             setLoading(false);
             setAlert({});
+
             setMessage({
                 type: 'error',
                 body: Lang.get('resources.not_deleted', {
                     name: 'Product',
                 }),
                 closed: () => setMessage({}),
-                actionText: Lang.get('actions.retry'),
-                action: () => deleteProduct(resourceId),
             });
         }
     };
@@ -384,6 +384,44 @@ function List(props) {
                 ),
                 quantity: Product.quantity,
                 metric: Product.metric,
+                actions: (
+                    <div style={{ width: 120, flex: 'no-wrap' }}>
+                        <Tooltip
+                            title={Lang.get('resources.edit', {
+                                name: 'Product',
+                            })}
+                        >
+                            <IconButton
+                                onClick={() =>
+                                    history.push(
+                                        NavigationUtils.route(
+                                            'backoffice.resources.products.edit',
+                                            {
+                                                id: Product.id,
+                                            },
+                                        ),
+                                    )
+                                }
+                            >
+                                <EditIcon />
+                            </IconButton>
+                        </Tooltip>
+
+                      
+                            <Tooltip
+                                title={Lang.get('resources.delete', {
+                                    name: 'Product',
+                                })}
+                            >
+                                <IconButton
+                                    color="secondary"
+                                    onClick={() => handleDeleteClick(Product.id)}
+                                >
+                                    <DeleteIcon />
+                                </IconButton>
+                            </Tooltip>
+                    </div>
+                ),
 
             }
         });

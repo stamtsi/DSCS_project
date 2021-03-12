@@ -71,7 +71,7 @@ class ProductsController extends Controller
     {
         //
         try{
-            $product = Product::findOrFail($product);
+            $product = Product::findOrFail($product->id);
         }catch(\Illuminate\Database\Eloquent\ModelNotFoundException $exception){
             return response()->json([
                 'success'=>false,
@@ -95,7 +95,7 @@ class ProductsController extends Controller
     public function update(Request $request, Product $product)
     {
         try{
-            $product = Product::findOrFail($product);
+            $product = Product::findOrFail($product->id);
         }catch(\Illuminate\Database\Eloquent\ModelNotFoundException $exception){
             return response()->json([
                 'success'=>false,
@@ -104,9 +104,7 @@ class ProductsController extends Controller
         }
         //Check if the data is valid
         $validator = Validator::make($request->all(), [
-            'name' => 'required|max:255',
             'label' => 'required|max:255',
-            'added_by' => 'required|integer',
             'quantity' => 'required',
             'experiation_date' => 'date',
             'metric'=> 'max:255'
@@ -115,9 +113,9 @@ class ProductsController extends Controller
             $response = ['success'=>false, 'data'=>$validator->messages()->first()];
             return response()->json($response, 422);
         }
-        $product->name = $request->name;
+
+        $product->name = preg_replace('/\s+/', '_', strtolower($request->label));
         $product->label = $request->label;
-        $product->added_by = $request->added_by;        
         $product->quantity = $request->quantity;       
         $product->experiation_date = $request->experiation_date;
         $product->metric = $request->metric;
@@ -141,16 +139,15 @@ class ProductsController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
         try{
-            $product = Product::findOrFail($product);
+            $product = Product::findOrFail($product->id);
         }catch(\Illuminate\Database\Eloquent\ModelNotFoundException $exception){
             return response()->json([
                 'success'=>false,
                 'data'=>'Couldnt find a product with this id'
             ], 404);
         }
-        if($product->destroy()){
+        if($product->delete()){
             return response()->json([
                 'success'=>true,
                 'data'=>'Product successfully deleted'
