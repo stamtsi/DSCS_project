@@ -8,6 +8,7 @@ import {
     Typography,
     withStyles,
 } from '@material-ui/core';
+import { ReactMic } from 'react-mic';
 
 import * as NavigationUtils from '../../../helpers/Navigation';
 import { Product } from '../../../models';
@@ -23,7 +24,8 @@ function Create(props) {
     const [product, setProduct] = useState({});
     const [message, setMessage] = useState({});
 
-   
+    const [record, setRecord] =  useState(false);
+
     /**
      * Handle form submit, this should send an API response
      * to create a product.
@@ -104,6 +106,19 @@ function Create(props) {
              
     };
 
+    const startRecording = () => {
+        setRecord(true);
+      }
+     
+    const stopRecording = () => {
+        setRecord(false);
+      }
+    const onData = (recordedBlob) => {
+        console.log('chunk of real-time data is: ', recordedBlob);
+    }
+    const onStop = (recordedBlob) => {
+        console.log('recordedBlob is: ', recordedBlob);
+    }
     return (
         <MasterLayout
             {...other}
@@ -135,6 +150,12 @@ function Create(props) {
 
                         {renderForm()}
                     </div>
+                    <ReactMic
+                        record={record}
+                        onStop={onStop}
+                        onData={onData} />
+                        {record=== false ? <button onClick={startRecording} type="button">Start</button> : null}
+                        {record=== true ? <button onClick={stopRecording} type="button">Stop</button> :null}
                 </Paper>
             </div>
         </MasterLayout>
