@@ -4,7 +4,7 @@ import { Link as RouterLink } from 'react-router-dom';
 
 import { Link, Typography, withStyles } from '@material-ui/core';
 
-import { Breadcrumbs as MuiBreadcrumbs } from '@material-ui/lab';
+import { Breadcrumbs as MuiBreadcrumbs } from '@material-ui/lab/Breadcrumbs';
 
 import { Home as HomeIcon } from '@material-ui/icons';
 

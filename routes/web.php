@@ -19,3 +19,7 @@ Route::prefix('/{locale?}')->where(['locale' => 'en|fil'])->group(function () {
         })->name('welcome');
     });
 });
+
+Route::get('/test-output-transcribe', [App\Http\Controllers\SpeechAPI::class, 'test_output_transcribe']);
+
+
