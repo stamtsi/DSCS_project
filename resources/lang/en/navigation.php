@@ -50,7 +50,7 @@ return [
     'lock' => 'Lock',
     'signout' => 'Sign out',
 
-    'help' => 'Help',
+    'help' => 'This app is designed to help you consume the food you have in your household. This is done by recommending recipes based on the ingredients you currently have left. By clicking the menu icon, you can navigate throught this app. There are four pages: User settigns, Products page, Inventory page and Recipe page. Explore !',
 
     'search' => 'Search',
 
@@ -64,5 +64,9 @@ return [
     'users' => 'Users',
     'roles' => 'Roles',
 
-    'citation' => 'Built with ❤️ by'
+    'citation' => 'Built with ❤️ by',
+
+    'recipes' => 'Recipes',
+    'inventory' => 'Inventory',
+    'products' => 'Products'
 ];

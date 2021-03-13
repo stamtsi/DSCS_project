@@ -18,15 +18,6 @@ class AddDeletedAtToUsers extends Migration
             $table->text('auth_token')->nullable();
             $table->timestamp('verified_at')->nullable();
             $table->timestamp('last_signin')->nullable();
-
-            $table->string('directory')->nullable();
-            $table->string('filename')->nullable();
-            $table->string('original_filename')->nullable();
-            $table->integer('filesize')->nullable();
-            $table->integer('thumbnail_filesize')->nullable();
-            $table->text('url')->nullable();
-            $table->text('thumbnail_url')->nullable();
-
             $table->timestamp('deleted_at')->nullable();
         });
     }
@@ -41,6 +32,10 @@ class AddDeletedAtToUsers extends Migration
         Schema::table('users', function (Blueprint $table) {
             //
             $table->dropColumn('deleted_at');
+            $table->dropColumn('verified_at');
+            $table->dropColumn('last_signin');
+            $table->dropColumn('auth_token');
+
         });
     }
 }

@@ -4,31 +4,18 @@ import { Typography } from '@material-ui/core';
 import { Master as MasterLayout } from './layouts';
 
 function Home(props) {
-    const primaryAction = {
-        text: 'Export Stats',
-        clicked: () => alert('Exporting your awesome stats...'),
-    };
 
-    const tabs = [
-        {
-            name: 'Overview',
-            active: true,
-        },
 
-        {
-            name: 'Monthly',
-            active: false,
-        },
-    ];
 
     return (
         <MasterLayout
             {...props}
-            pageTitle={Lang.get('navigation.dashboard')}
-            primaryAction={primaryAction}
-            tabs={tabs}
+            pageTitle={Lang.get('navigation.recipes')}
+            showBreadcrumbs={false}
         >
-            <Typography>There is no place like home</Typography>
+            <Typography  style={{"marginTop":"24px"}}>We found those recipes based on your inventory</Typography>
+
+
         </MasterLayout>
     );
 }

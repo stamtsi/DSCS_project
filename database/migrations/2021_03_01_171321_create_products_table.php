@@ -18,6 +18,8 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('label');
             $table->foreignId('added_by');
+            $table->string('quantity');
+            $table->string('experiation_date');
             $table->timestamps();
         });
     }

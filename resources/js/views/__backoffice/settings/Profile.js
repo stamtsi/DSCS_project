@@ -104,26 +104,14 @@ function Profile(props) {
             <Paper className={classes.form}>
                 <Formik
                     initialValues={{
-                        firstname: user.firstname,
-                        middlename: user.middlename,
-                        lastname: user.lastname,
-
-                        gender: user.gender,
-                        birthdate: user.birthdate,
-                        address: user.address,
+                        name: user.name,
                     }}
                     validationSchema={Yup.object().shape({
-                        firstname: Yup.string().required(
+                        name: Yup.string().required(
                             Lang.get('validation.required', {
-                                attribute: 'firstname',
+                                attribute: 'name',
                             }),
-                        ),
-
-                        lastname: Yup.string().required(
-                            Lang.get('validation.required', {
-                                attribute: 'lastname',
-                            }),
-                        ),
+                        )
                     })}
                     onSubmit={async (values, form) => {
                         let mappedValues = {};
@@ -166,156 +154,22 @@ function Profile(props) {
                             </Typography>
 
                             <TextField
-                                id="firstname"
-                                name="firstname"
-                                label="First Name"
-                                placeholder="Enter your firstname"
-                                value={values.firstname}
+                                id="name"
+                                name="name"
+                                label="Name"
+                                placeholder="Enter your name"
+                                value={values.name}
                                 onChange={handleChange}
                                 fullWidth
                                 margin="dense"
                                 error={
                                     submitCount > 0 &&
-                                    errors.hasOwnProperty('firstname')
+                                    errors.hasOwnProperty('name')
                                 }
                                 helperText={
                                     submitCount > 0 &&
-                                    errors.hasOwnProperty('firstname') &&
-                                    errors.firstname
-                                }
-                            />
-
-                            <TextField
-                                id="middlename"
-                                name="middlename"
-                                label="Middle Name"
-                                placeholder="Enter your middlename"
-                                value={values.middlename}
-                                onChange={handleChange}
-                                fullWidth
-                                margin="dense"
-                                error={
-                                    submitCount > 0 &&
-                                    errors.hasOwnProperty('middlename')
-                                }
-                                helperText={
-                                    submitCount > 0 &&
-                                    errors.hasOwnProperty('middlename') &&
-                                    errors.middlename
-                                }
-                            />
-
-                            <TextField
-                                id="lastname"
-                                name="lastname"
-                                label="Last Name"
-                                placeholder="Enter your lastname"
-                                value={values.lastname}
-                                onChange={handleChange}
-                                fullWidth
-                                margin="dense"
-                                error={
-                                    submitCount > 0 &&
-                                    errors.hasOwnProperty('lastname')
-                                }
-                                helperText={
-                                    submitCount > 0 &&
-                                    errors.hasOwnProperty('lastname') &&
-                                    errors.lastname
-                                }
-                            />
-
-                            <FormControl
-                                fullWidth
-                                margin="dense"
-                                error={
-                                    submitCount > 0 &&
-                                    errors.hasOwnProperty('gender')
-                                }
-                            >
-                                <InputLabel htmlFor="gender">Gender</InputLabel>
-
-                                <Select
-                                    id="gender"
-                                    name="gender"
-                                    value={values.gender}
-                                    onChange={handleChange}
-                                    input={<Input fullWidth />}
-                                    autoWidth
-                                >
-                                    <MenuItem value="">
-                                        Please select the gender
-                                    </MenuItem>
-
-                                    <MenuItem value="female">Female</MenuItem>
-
-                                    <MenuItem value="male">Male</MenuItem>
-                                </Select>
-
-                                {submitCount > 0 &&
-                                    errors.hasOwnProperty('gender') && (
-                                        <FormHelperText>
-                                            {errors.gender}
-                                        </FormHelperText>
-                                    )}
-                            </FormControl>
-
-                            <FormControl
-                                fullWidth
-                                margin="dense"
-                                error={
-                                    submitCount > 0 &&
-                                    errors.hasOwnProperty('birthdate')
-                                }
-                            >
-                                <MuiPickersUtilsProvider utils={MomentUtils}>
-                                    <DatePicker
-                                        id="birthdate"
-                                        name="birthdate"
-                                        label="Birthdate"
-                                        placeholder="Please pick your birthdate"
-                                        value={values.birthdate}
-                                        onChange={date =>
-                                            setFieldValue('birthdate', date)
-                                        }
-                                        format="YYYY-MM-DD"
-                                        maxDate={moment()
-                                            .subtract(10, 'y')
-                                            .subtract(1, 'd')
-                                            .format('YYYY-MM-DD')}
-                                        keyboard
-                                        clearable
-                                        disableFuture
-                                    />
-                                </MuiPickersUtilsProvider>
-
-                                {submitCount > 0 &&
-                                    errors.hasOwnProperty('birthdate') && (
-                                        <FormHelperText>
-                                            {errors.birthdate}
-                                        </FormHelperText>
-                                    )}
-                            </FormControl>
-
-                            <TextField
-                                id="address"
-                                name="address"
-                                label="Address"
-                                placeholder="Enter your address"
-                                value={values.address}
-                                onChange={handleChange}
-                                fullWidth
-                                multiline
-                                rows={3}
-                                margin="dense"
-                                error={
-                                    submitCount > 0 &&
-                                    errors.hasOwnProperty('address')
-                                }
-                                helperText={
-                                    submitCount > 0 &&
-                                    errors.hasOwnProperty('address') &&
-                                    errors.address
+                                    errors.hasOwnProperty('name') &&
+                                    errors.name
                                 }
                             />
 
