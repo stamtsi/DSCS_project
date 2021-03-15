@@ -26,6 +26,7 @@
         "react": "^16.10.1",
         "react-dom": "^16.10.1",
         "react-dropzone": "^10.1.9",
+        "react-html5-camera-photo": "^1.5.4",
         "react-loading-skeleton": "^1.1.2",
         "react-mic": "^12.4.6",
         "react-router-dom": "^4.3.1",

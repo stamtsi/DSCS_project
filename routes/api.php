@@ -19,6 +19,7 @@ use App\Http\Controllers\Api\V1\Settings\AccountController;
 use App\Http\Controllers\Api\V1\Auth\ForgotPasswordController;
 use App\Http\Controllers\Api\V1\Auth\ResetPasswordController;
 use App\Http\Controllers\Api\V1\ProductsController;
+use App\Http\Controllers\Api\V1\RecipeController;
 
 
 Route::namespace('Api')->name('api.')->group(function () {
@@ -56,4 +57,7 @@ Route::namespace('Api')->name('api.')->group(function () {
 });
 Route::middleware('auth:api')->prefix('v1')->group(function () {
     Route::apiResource('products', ProductsController::class);
+
+
+    Route::get('/recipes', [RecipeController::class, 'index'])->name('recipes'); 
 });

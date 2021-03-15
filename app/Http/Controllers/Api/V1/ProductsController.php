@@ -34,7 +34,7 @@ class ProductsController extends Controller
         $validator = Validator::make($request->all(), [
             'label' => 'required|max:255',
             'quantity' => 'required',
-            'experiation_date' => 'date',
+            // 'experiation_date' => 'date',
             'metric'=> 'max:255'
             ]);
         if ($validator->fails()) {
@@ -47,7 +47,9 @@ class ProductsController extends Controller
         $product->label = $request->label;
         $product->added_by = Auth::id();    
         $product->quantity = $request->quantity;       
-        $product->experiation_date = $request->experiation_date;
+        // add expiration day to product
+        // @todo Extract info from expiration table
+        $product->experiation_date = date('Y-m-d H:i:s', time() + 7 * 24 * 60 * 60);
         $product->metric = $request->metric;
 
         if($product->save()){
@@ -106,7 +108,7 @@ class ProductsController extends Controller
         $validator = Validator::make($request->all(), [
             'label' => 'required|max:255',
             'quantity' => 'required',
-            'experiation_date' => 'date',
+            // 'experiation_date' => 'date',
             'metric'=> 'max:255'
             ]);
         if ($validator->fails()) {
@@ -117,12 +119,12 @@ class ProductsController extends Controller
         $product->name = preg_replace('/\s+/', '_', strtolower($request->label));
         $product->label = $request->label;
         $product->quantity = $request->quantity;       
-        $product->experiation_date = $request->experiation_date;
+        // $product->experiation_date = $request->experiation_date;
         $product->metric = $request->metric;
 
         if($product->save()){
             $response = ['success'=>true, 'data'=>$product];
-            return response()->json($response, 201);
+            return response()->json($response, 200);
         }else{
             return response()->json([
                 'success'=>false,

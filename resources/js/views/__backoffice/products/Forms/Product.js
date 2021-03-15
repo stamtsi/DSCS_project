@@ -31,11 +31,11 @@ const Profile = props => {
                         attribute: 'label',
                     }),
                 ),
-                experiation_date: Yup.date().required(
-                    Lang.get('validation.required', {
-                        attribute: 'experiation_date',
-                    }),
-                ),
+                // experiation_date: Yup.date().required(
+                //     Lang.get('validation.required', {
+                //         attribute: 'experiation_date',
+                //     }),
+                // ),
                 metric: Yup.string().required(
                     Lang.get('validation.required', {
                         attribute: 'metric',
@@ -81,7 +81,7 @@ const Profile = props => {
                 setFieldValue,
             }) => (
                 <Form>
-                    <Grid container spacing={24}>
+                    <Grid className="mb-4" container spacing={24}>
                         <Grid item xs={12} sm={4}>
                             <FormControl
                                 className={classes.formControl}
@@ -142,10 +142,7 @@ const Profile = props => {
                                     )}
                             </FormControl>
                         </Grid>
-                    </Grid>
-
-                    <Grid container spacing={24}>
-                        <Grid item xs={12} sm={6}>
+                        <Grid item xs={12} sm={4}>
                             <FormControl
                                 className={classes.formControl}
                                 error={
@@ -182,8 +179,7 @@ const Profile = props => {
                                     )}
                             </FormControl>
                         </Grid>
-
-                        <Grid item xs={12} sm={6}>
+                         {/* <Grid item xs={12} sm={6}>
                             <FormControl
                                 className={classes.formControl}
                                 error={
@@ -215,8 +211,13 @@ const Profile = props => {
                                         </FormHelperText>
                                     )}
                             </FormControl>
-                        </Grid>
+                        </Grid> */}
                     </Grid>
+
+                    
+                        
+
+                       
 
                     <div className={classes.sectionSpacer} />
 

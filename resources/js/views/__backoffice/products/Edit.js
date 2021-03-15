@@ -26,6 +26,9 @@ function Edit(props) {
     const [product, setProduct] = useState({});
     const [message, setMessage] = useState({});
 
+
+    const { history } = props;
+
     /**
      * Fetch the product.
      *
@@ -75,7 +78,6 @@ function Edit(props) {
         try {
            
             const product = await Product.update(params.id,values);
-            console.log(product);
             setMessage({
                 type: 'success',
                 body: Lang.get('resources.updated', {
@@ -87,14 +89,18 @@ function Edit(props) {
             setLoading(false);
             setFormValues(values);
             setProduct(product);
-
+            if(product.success){
+                setTimeout( history.push(
+                    NavigationUtils.route('backoffice.resources.products.index'),
+                ), 500);
+            }
         } catch (error) {
             if (!error.response) {
                 throw new Error('Unknown error');
             }
 
             const { errors } = error.response.data;
-
+            console.log(errors);
             setErrors(errors);
 
             setLoading(false);
@@ -124,7 +130,7 @@ function Edit(props) {
         let defaultProfileValues = {};
             defaultProfileValues = {
                 label: product.data.label === null ? '' : product.data.label,
-                experiation_date: product.data.experiation_date === null ? '' : product.data.experiation_date,
+                // experiation_date: product.data.experiation_date === null ? '' : product.data.experiation_date,
                 metric: product.data.metric === null ? '' : product.data.metric,
                 quantity: product.data.quantity === null ? '' : product.data.quantity,
             };

@@ -6,6 +6,7 @@ import {
     StepLabel,
     Stepper,
     Typography,
+    Button,
     withStyles,
 } from '@material-ui/core';
 import { ReactMic } from 'react-mic';
@@ -14,7 +15,7 @@ import * as NavigationUtils from '../../../helpers/Navigation';
 import { Product } from '../../../models';
 import { LinearIndeterminate } from '../../../ui/Loaders';
 import { Master as MasterLayout } from '../layouts';
-
+import Camera from 'react-html5-camera-photo';
 import { Product as ProductForm } from './Forms';
 
 function Create(props) {
@@ -63,13 +64,20 @@ function Create(props) {
                 body: Lang.get('resources.created', {
                     name: 'Product',
                 }),
-                closed: () => setMessage({}),
+                closed: () => {
+                    setMessage({});
+                }
             });
 
 
             setLoading(false);
             setFormValues(newFormValues);
             setProduct(product);
+            if(product.success){
+                setTimeout( history.push(
+                    NavigationUtils.route('backoffice.resources.products.index'),
+                ), 500);
+            }
         } catch (error) {
             if (!error.response) {
                 throw new Error('Unknown error');
@@ -90,12 +98,11 @@ function Create(props) {
     const renderForm = () => {
         const defaultProfileValues = {
             label: '',
-            experiation_date: '',
+            // experiation_date: '',
             metric: '',
             quantity: '',
         };
 
-        
        return <ProductForm
             {...other}
             values={
@@ -119,6 +126,11 @@ function Create(props) {
     const onStop = (recordedBlob) => {
         console.log('recordedBlob is: ', recordedBlob);
     }
+
+    const handleTakePhoto = (dataUri) => {
+        // Do stuff with the photo...
+        console.log('takePhoto');
+      }
     return (
         <MasterLayout
             {...other}
@@ -152,10 +164,17 @@ function Create(props) {
                     </div>
                     <ReactMic
                         record={record}
+                        className="sound-wave"
                         onStop={onStop}
-                        onData={onData} />
-                        {record=== false ? <button onClick={startRecording} type="button">Start</button> : null}
-                        {record=== true ? <button onClick={stopRecording} type="button">Stop</button> :null}
+                        onData={onData}
+                        strokeColor="primary"
+                        backgroundColor="#424242" />
+                        {record === false ? <Button className="mdc-button mdc-button--raised" onClick={startRecording} variant="contained" color="primary" type="button">Start</Button> : null }
+                        {record === true ? <Button className="mdc-button mdc-button--raised" onClick={stopRecording} variant="contained" color="secondary" type="button">Stop</Button> :null}
+                    {/* 
+                        <Camera
+                        onTakePhoto = { (dataUri) => { handleTakePhoto(dataUri); } }
+                        /> */}
                 </Paper>
             </div>
         </MasterLayout>

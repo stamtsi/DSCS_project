@@ -30,11 +30,11 @@ const ProductEdit = props => {
                         attribute: 'label',
                     }),
                 ),
-                experiation_date: Yup.date().required(
-                    Lang.get('validation.required', {
-                        attribute: 'experiation_date',
-                    }),
-                ),
+                // experiation_date: Yup.date().required(
+                //     Lang.get('validation.required', {
+                //         attribute: 'experiation_date',
+                //     }),
+                // ),
                 metric: Yup.string().required(
                     Lang.get('validation.required', {
                         attribute: 'metric',
@@ -80,7 +80,7 @@ const ProductEdit = props => {
                 setFieldValue,
             }) => (
                 <Form>
-                    <Grid container spacing={24}>
+                    <Grid className="mb-4" container spacing={24}>
                         <Grid item xs={12} sm={4}>
                             <FormControl
                                 className={classes.formControl}
@@ -141,10 +141,41 @@ const ProductEdit = props => {
                                     )}
                             </FormControl>
                         </Grid>
-                    </Grid>
+                          {/* <Grid item xs={12} sm={6}>
+                            <FormControl
+                                className={classes.formControl}
+                                error={
+                                    submitCount > 0 &&
+                                    errors.hasOwnProperty('experiation_date')
+                                }
+                            >
+                                <MuiPickersUtilsProvider utils={MomentUtils}>
+                                    <DatePicker
+                                        id="experiation_date"
+                                        name="experiation_date"
+                                        label="Experiation date"
+                                        placeholder="Please pick the experiation date"
+                                        value={values.experiation_date}
+                                        onChange={date =>
+                                            setFieldValue('experiation_date', date)
+                                        }
+                                        format="YYYY-MM-DD"
+                                        keyboard
+                                        clearable
+                                        disableFuture
+                                    />
+                                </MuiPickersUtilsProvider>
 
-                    <Grid container spacing={24}>
-                        <Grid item xs={12} sm={6}>
+                                {submitCount > 0 &&
+                                    errors.hasOwnProperty('experiation_date') && (
+                                        <FormHelperText>
+                                            {errors.experiation_date}
+                                        </FormHelperText>
+                                    )}
+                            </FormControl>
+                        </Grid> */}
+
+                        <Grid item xs={12} sm={4}>
                             <FormControl
                                 className={classes.formControl}
                                 error={
@@ -177,40 +208,6 @@ const ProductEdit = props => {
                                     errors.hasOwnProperty('metric') && (
                                         <FormHelperText>
                                             {errors.metric}
-                                        </FormHelperText>
-                                    )}
-                            </FormControl>
-                        </Grid>
-
-                        <Grid item xs={12} sm={6}>
-                            <FormControl
-                                className={classes.formControl}
-                                error={
-                                    submitCount > 0 &&
-                                    errors.hasOwnProperty('experiation_date')
-                                }
-                            >
-                                <MuiPickersUtilsProvider utils={MomentUtils}>
-                                    <DatePicker
-                                        id="experiation_date"
-                                        name="experiation_date"
-                                        label="Experiation date"
-                                        placeholder="Please pick the experiation date"
-                                        value={values.experiation_date}
-                                        onChange={date =>
-                                            setFieldValue('experiation_date', date)
-                                        }
-                                        format="YYYY-MM-DD"
-                                        keyboard
-                                        clearable
-                                        disableFuture
-                                    />
-                                </MuiPickersUtilsProvider>
-
-                                {submitCount > 0 &&
-                                    errors.hasOwnProperty('experiation_date') && (
-                                        <FormHelperText>
-                                            {errors.experiation_date}
                                         </FormHelperText>
                                     )}
                             </FormControl>
