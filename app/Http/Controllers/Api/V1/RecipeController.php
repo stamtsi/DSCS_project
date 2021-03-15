@@ -21,7 +21,17 @@ class RecipeController extends Controller
             $ingredients .= $product->label.",";
         }
         $ingredients = substr($ingredients, 0, strlen($ingredients)-1);
-        $recipes = Http::get("https://api.spoonacular.com/recipes/findByIngredients?ingredients=" . $ingredients . "&number=5&apiKey=19c252f996d147b7b50379018fa1b474");
+        $recipes = Http::get("https://api.spoonacular.com/recipes/findByIngredients?ingredients=" . $ingredients . "&number=5&apiKey=19c252f996d147b7b50379018fa1b474&ranking=2");
+        return response()->json([
+            'success'=>true,
+            'data'=>json_decode($recipes->body())
+        ], 200); 
+        
+    }
+
+    public function show($id)
+    {
+        $recipes = Http::get("https://api.spoonacular.com/recipes/".$id."/information?includeNutrition=false&apiKey=19c252f996d147b7b50379018fa1b474");
         return response()->json([
             'success'=>true,
             'data'=>json_decode($recipes->body())

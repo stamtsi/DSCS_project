@@ -60,4 +60,6 @@ Route::middleware('auth:api')->prefix('v1')->group(function () {
 
 
     Route::get('/recipes', [RecipeController::class, 'index'])->name('recipes'); 
+    Route::get('/recipes/{id}', [RecipeController::class, 'show'])->name('recipes'); 
+
 });

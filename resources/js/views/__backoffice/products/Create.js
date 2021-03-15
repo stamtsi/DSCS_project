@@ -171,10 +171,10 @@ function Create(props) {
                         backgroundColor="#424242" />
                         {record === false ? <Button className="mdc-button mdc-button--raised" onClick={startRecording} variant="contained" color="primary" type="button">Start</Button> : null }
                         {record === true ? <Button className="mdc-button mdc-button--raised" onClick={stopRecording} variant="contained" color="secondary" type="button">Stop</Button> :null}
-                    {/* 
+ 
                         <Camera
                         onTakePhoto = { (dataUri) => { handleTakePhoto(dataUri); } }
-                        /> */}
+                        />
                 </Paper>
             </div>
         </MasterLayout>

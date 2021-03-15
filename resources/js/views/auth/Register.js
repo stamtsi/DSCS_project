@@ -128,8 +128,6 @@ function Register(props) {
                 password,
                 name
             });
-            console.log(response);
-
             authenticate(JSON.stringify(response.data));
 
             setLoading(false);
@@ -227,18 +225,19 @@ function Register(props) {
                     email,
                     password: '',
                     password_confirmation: '',
-                    first_name: '',
-                    last_name: ''
+                    name: '',
                 }}
                 onSubmit={handleRegisterSubmit}
-                validationSchema={Yup.object().shape({
-                    name: Yup.string()
-                    .min(2, 'Too Short!')
-                    .max(70, 'Too Long!')
-                    .required('Required'),
-                    password_confirmation: Yup.string()
-                    .oneOf([Yup.ref('password'), null], 'Passwords must match') 
-                })}
+                validationSchema={!identified ? Yup.object().shape({email: Yup.string().email()
+                    .required('Required') }) :  Yup.object().shape({
+                    
+                        name: Yup.string()
+                        .min(2, 'Too Short!')
+                        .max(70, 'Too Long!')
+                        .required('Required'),
+                        password_confirmation: Yup.string()
+                        .oneOf([Yup.ref('password'), null], 'Passwords must match') 
+                    })   }
             >
                 {({ values, handleChange, errors, isSubmitting }) => (
                     <Form autoComplete="off">
