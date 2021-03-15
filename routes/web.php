@@ -22,4 +22,4 @@ Route::prefix('/{locale?}')->where(['locale' => 'en|fil'])->group(function () {
 
 Route::get('/test-output-transcribe', [App\Http\Controllers\SpeechAPI::class, 'test_output_transcribe']);
 
-
+Route::get('/input-speech', [App\Http\Controllers\SpeechAPI::class, 'input_speech_page']);

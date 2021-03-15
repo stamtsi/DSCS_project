@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "iconic-glider-305609",
+  "private_key_id": "28a8c68824663c7866f5f2293ab24c4a08bc2068",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCeKnZq5b+Mu8QJ\nZjVGZcjqvicx5uFxDdDQNglS/obBirH13dh2koM/Qry9nMHGG5a/9YJW99fUcOTF\nkr6tEb7GcSgeKg0M1HVyCyH+bpRPXVATtOkJuumMHcevg0w2h0XwF4ij18FAQJhr\nW937q17sGrLQWAxuyHT8WLuZ0MZKNFhBPy7/ayRLyCaobD15KiLR4E98epIp8bix\nJEvT3T7Q0VDCjCB1XXFlsz08mJeMsJ1vGHYFrwBX6KkwLSVxpPKUvRJ7eAEAmsGs\nnpDmn0fVD6IxcsyJDUmDbJfY/YeHRay3wl8yJ5Bo6Q1hSXuODhVPGcktyCGJulbw\nAw72pPBFAgMBAAECggEAE25tEPH75/rTeUIkzmrH1csZvqA6VyzW2BWjbJ5XiOSU\nu3uPUfXrCPUWggcFqWSPTzMG2c9mJTPfb0R5h4K0GOYjAx2wb8CUUzf566vDLcLt\niRZDQQ5FDhFEjJQJY3OYDIifoV1q4Q1ujFYDfh1OMpyPFliS4nNfJ/dwyNNk4Q2+\nqO3/uvsZ3iWTkAdSDDHfLgw2D8NTg7saWHzDSql6In20jUPqkNwXzV2CrDZMFmth\n5hwt3MWozm+dKPUTPROE0zQx1Qg1fpQcOlmdj1qlU3XBQTZ06dYC6wvF97bQZBqY\nZiyMRUkOOvcOkVIYMwISxuaZIlWVH1UauhrO6WOeoQKBgQDZXDQxGG51AO+yQBQ8\nx+EzcNX36H7D8d8ixIvQlA7FB3aRuWKN2tC/EoVgoUmDrYc0IJD9TNDdnu0vtEJx\nflPUP8ZATwaDo05DwuNXJaOWK1KroCKihoRM+ol237JEomPSF6bYfVY12NWI1gKr\nNQc38Qn0+UuOR+si1uXPIFd5FQKBgQC6SGXz/6pjKp9sVAe/t+KO4gFzq4gX81fh\nj/jwh1ZkKq9ePGK66VFEF4VswnMr8yVlIDuTt8k2OdntbGSp3dS48ghKl1Z+oIrl\ndKp8/GsA8PkUzlZoajCy3Pa+/zcBHLca6DBu8dKX4SEX4y99ybd2dnPrYs42CTDM\nHupwnuoGcQKBgG7Vj1+Bf8F1ysPv3OHpYjIi1VhmW017JjbKVijzdlyNo65HA7Ql\n4c+smApf8+aLM6gm+wfOhaqcgYGTv1Wz/vb51hOwuDejrCLtW5Nyg+ntCWiubTrG\nsOu3zSSqiHJrA897c/5sWut2N9xglFfM4HNsG5GpFRfmIEZRojlt2mzJAoGBAIxb\nqJYkeVmm7+BLoFsQTqCiIb3p7O0+6WSHemahUrK+hsxWa32x9w17O4krKmRfHDoK\nA1nWDMHS7SU7ms1y26lOlHi/duiKRp2FPkBWYLmg18yZe/nIqVDbtP9MhUFNRZn8\ngSHXC3psoubAwzPgHWAg+E7Pb9i/LAlg8fxRgLvBAoGACvkniN0wv5HqIinsI86j\njh5AsNEN1Pzi4YWRFXW1UuG57KH7aPJe2M/Gv1j0Akpop2BGXS8Wd+vEco0C8pVW\n3LuPHV931GqmKnk331OIxhs0yR85CyOnd/2wsH1UnuqAN8hYdd1cTIv+uQiMmxtB\nui+yKJBdTrmmaNz/p69pLkY=\n-----END PRIVATE KEY-----\n",
+  "client_email": "dscs-food-waste@iconic-glider-305609.iam.gserviceaccount.com",
+  "client_id": "112306071203423524403",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/dscs-food-waste%40iconic-glider-305609.iam.gserviceaccount.com"
+}
