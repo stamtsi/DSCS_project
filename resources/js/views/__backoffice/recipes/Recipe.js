@@ -51,7 +51,7 @@ function Recipe(props) {
     }, [recipe.data]);
 
     const renderIngredients = (ingredients) => {
-        return ingredients.map(element=>{
+        return ingredients.length>0 && ingredients.map(element=>{
             return (<Grid item xs={12}>
                         {element.originalString}
                     </Grid>
@@ -126,7 +126,7 @@ function Recipe(props) {
                                 Ingredients
                             </Typography>
                             <Grid className="mb-4" gutterBottom container>
-                            {renderIngredients(recipe.data.extendedIngredients)}
+                            {recipe.data.extendedIngredients !== undefined ? renderIngredients(recipe.data.extendedIngredients):null}
                             </Grid>
                         </Grid>
 
