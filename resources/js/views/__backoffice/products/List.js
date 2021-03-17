@@ -21,6 +21,8 @@ import { Table } from '../../../ui';
 import { Master as MasterLayout } from '../layouts';
 import { Product } from '../../../models';
 import { AppContext } from '../../../AppContext';
+import ProductsImg from '../../../../img/products.png';
+import { Fragment } from 'react';
 
 function List(props) {
     const [loading, setLoading] = useState(false);
@@ -370,7 +372,7 @@ function List(props) {
     const data =
         rawData &&
         rawData.map(Product => {
-            console.log(Product);
+            // console.log(Product);
             return {
                 name: (
                     <Grid
@@ -437,6 +439,18 @@ function List(props) {
             alert={alert}
         >
             {!loading && data && (
+                <Fragment>
+                 <Grid container
+                 direction="row"
+                 alignItems="center"
+                 justify="center"
+                 style={{
+                        'backgroundImage':`url(${ProductsImg})`,
+                        }
+                        }
+                        className="image-background"
+                        wrap="nowrap">
+                </Grid>
                 <Table
                     title={Lang.get('navigation.products')}
                     data={data}
@@ -458,6 +472,7 @@ function List(props) {
                     onFilter={handleFiltering}
                     onFilterRemove={handleFilterRemove}
                 />
+                </Fragment>
             )}
         </MasterLayout>
     );

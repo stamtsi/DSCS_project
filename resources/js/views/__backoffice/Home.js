@@ -51,15 +51,15 @@ function Home(props) {
     const recipes =  pagination.data !== undefined && pagination.data.length > 0 ?
         pagination.data !== undefined &&
         pagination.data.map(recipe => {
-            console.log(recipe);
+            // console.log(recipe);
             return (
-                <Grid item xs={12} sm={4}  alignItems="center" className="p-4" onClick={()=>{
+                <Grid item xs={12} sm={4}  alignItems="center" className="p-4" style={{"cursor":"pointer"}} onClick={()=>{
                     history.push(
                         NavigationUtils.route('backoffice.resources.recipes.show', {id:recipe.id}),
                     )
                 }}>
                     {/* <Paper> */}
-                        <div>
+                        <div >
                             <img src={`${recipe.image}`} />
                             {/* <Typography>{recipe.title}</Typography> */}
                             <Typography

@@ -16,3 +16,14 @@ img{
 main{
     padding: 20px !important;
 }
+.image-background{
+    background-size: cover;
+    min-height: 450px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+@media screen and (max-width: 767px){
+    .image-background{
+        min-height: 200px;
+    }
+}

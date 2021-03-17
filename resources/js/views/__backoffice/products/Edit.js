@@ -18,6 +18,7 @@ import { LinearIndeterminate } from '../../../ui/Loaders';
 import { Master as MasterLayout } from '../layouts';
 
 import { ProductEdit } from './Forms';
+import AddProductImg from '../../../../img/add_products.png';
 
 function Edit(props) {
     const [loading, setLoading] = useState(false);
@@ -155,7 +156,17 @@ function Edit(props) {
         >
             <div className={classes.pageContentWrapper}>
                 {loading && <LinearIndeterminate />}
-
+                <Grid container
+                        direction="row"
+                        alignItems="center"
+                        justify="center"
+                        style={{
+                            'backgroundImage':`url(${AddProductImg})`,
+                            }
+                        }
+                        className="image-background"
+                        wrap="nowrap">
+                </Grid>
                 <Paper>
                     <div className={classes.pageContent}>
                         <Typography

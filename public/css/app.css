@@ -5,7 +5,7 @@ img{
     width: 60px;
     height: 60px;
     display: flex;
-    border-radius: 50% !important;
+    border-radius: 50%;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
@@ -15,4 +15,15 @@ img{
 }
 main{
     padding: 20px !important;
+}
+.image-background{
+    background-size: cover;
+    min-height: 450px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+@media screen and (max-width: 767px){
+    .image-background{
+        min-height: 200px;
+    }
 }
