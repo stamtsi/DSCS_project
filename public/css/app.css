@@ -26,4 +26,13 @@ main{
     .image-background{
         min-height: 200px;
     }
+    img{
+        width: 100%;
+    }
+}
+canvas{
+    max-width: 100%;
+}
+.d-none{
+    display: none;
 }

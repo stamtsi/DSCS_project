@@ -9,6 +9,7 @@ import {
     Button,
     withStyles,
     Grid,
+    SvgIcon,
 } from '@material-ui/core';
 import { ReactMic } from 'react-mic';
 
@@ -19,6 +20,11 @@ import { Master as MasterLayout } from '../layouts';
 import Camera from 'react-html5-camera-photo';
 import { Product as ProductForm } from './Forms';
 import AddProductImg from '../../../../img/add_products.png';
+import Microphone from '../../../../img/icons/microphone-solid.svg';
+import MicrophoneAlt from '../../../../img/icons/microphone-slash-solid.svg';
+import CameraRetro from '../../../../img/icons/camera-retro-solid.svg';
+
+import { Fragment } from 'react';
 
 
 function Create(props) {
@@ -101,11 +107,9 @@ function Create(props) {
     const renderForm = () => {
         const defaultProfileValues = {
             label: '',
-            // experiation_date: '',
             metric: '',
             quantity: '',
         };
-
        return <ProductForm
             {...other}
             values={
@@ -122,18 +126,21 @@ function Create(props) {
      
     const stopRecording = () => {
         setRecord(false);
+        setFormValues([{
+            label:'Spinach',
+            metric: 'grams',
+            quantity: 400
+        }]);
+        renderForm();
+
       }
     const onData = (recordedBlob) => {
         console.log('chunk of real-time data is: ', recordedBlob);
     }
     const onStop = (recordedBlob) => {
-        console.log('recordedBlob is: ', recordedBlob);
+        console.log('recordedBlob is: ', recordedBlob);  
     }
 
-    const handleTakePhoto = (dataUri) => {
-        // Do stuff with the photo...
-        console.log('takePhoto');
-      }
     return (
         <MasterLayout
             {...other}
@@ -153,7 +160,6 @@ function Create(props) {
                         }
                         className="image-background"
                         wrap="nowrap">
-                    {/* <img src={AddProductImg}/> */}
                 </Grid>
                 <Paper>
                     <div className={classes.pageContent}>
@@ -183,12 +189,14 @@ function Create(props) {
                         wrap="nowrap">
                         <ReactMic
                         record={record}
-                        className="sound-wave"
+                        className={record ? "sound-wave" :  "sound-wave d-none"}
                         onStop={onStop}
                         onData={onData}
                         strokeColor="primary"
-                        backgroundColor="#424242" />  
+                        backgroundColor="#424242"/>  
                     </Grid>
+                    {record ?
+                    <Fragment>
                     <Grid container
                         direction="row"
                         alignItems="center"
@@ -200,13 +208,19 @@ function Create(props) {
                                 "paddingBottom":20
                             }
                         }>
-
-                        {record === false ? <Button className="mdc-button mdc-button--raised" onClick={startRecording} variant="contained" color="primary" type="button">Start</Button> : null }
-                        {record === true ? <Button className="mdc-button mdc-button--raised" onClick={stopRecording} variant="contained" color="secondary" type="button">Stop</Button> :null}
-                    </Grid>
-                        {/* <Camera
-                        onTakePhoto = { (dataUri) => { handleTakePhoto(dataUri); } }
-                        /> */}
+                        <img src={MicrophoneAlt} style={{maxWidth:40}} onClick={stopRecording}/>
+                    </Grid></Fragment>
+                    : <Grid container
+                    direction="row"
+                    alignItems="center"
+                    justify="center"
+                    wrap="nowrap"
+                    style={
+                        {
+                            "paddingTop":20,
+                            "paddingBottom":20
+                        }
+                    }><img src={Microphone} style={{maxWidth:40}} onClick={startRecording}/> <img src={CameraRetro} style={{maxWidth:60, marginLeft: 50}} /></Grid>}                      
                 </Paper>
             </div>
         </MasterLayout>

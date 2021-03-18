@@ -5,11 +5,17 @@ import { Master as MasterLayout } from "../layouts";
 import { Recipes } from "../../../models";
 import { Fragment } from "react";
 import * as NavigationUtils from '../../../helpers/Navigation';
+import Dairy from '../../../../img/icons/dairy.png';
+import NoGluten from '../../../../img/icons/no-gluten.png';
+import Vegan from '../../../../img/icons/vegan.png';
+import Vegetarian from '../../../../img/icons/vegetarian.png';
+
 
 function Recipe(props) {
     const [loading, setLoading] = useState(true);
     const [recipe, setRecipe] = useState({});
     const [message, setMessage] = useState({});
+    const { history } = props;
 
     /**
      * This should send an API request to fetch the recipe.
@@ -65,6 +71,25 @@ function Recipe(props) {
                     <div>
                         <img src={`${recipe.data.image}`} />
                         {/* <Typography>{recipe.title}</Typography> */}
+                        <Grid className="mb-4" container style={{'marginTop':20}}>
+                            
+                            {recipe.data.vegan ? <Grid item xs={3} style={{textAlign: 'center'}}>
+                             <img src={`${Vegan}`} style={{maxWidth:40}}/>
+                            </Grid> : null }
+                            {recipe.data.vegetarian ? <Grid item xs={3} style={{textAlign: 'center'}}>
+                            <img src={`${Vegetarian}`} style={{maxWidth:40}}/>
+
+                            </Grid> : null }
+                            
+                            {recipe.data.glutenFree ? <Grid item xs={3} style={{textAlign: 'center'}}>
+                            <img src={`${NoGluten}`} style={{maxWidth:40}}/>
+
+                            </Grid> : null }
+                            {recipe.data.dairyFree ? <Grid item xs={3} style={{textAlign: 'center'}}>
+                            <img src={`${Dairy}`} style={{maxWidth:40}}/>
+
+                            </Grid> : null }
+                            </Grid>
                         <Typography
                             component="h3"
                             variant="h5"
@@ -77,7 +102,13 @@ function Recipe(props) {
                             
                                 <Grid item xs={4}>
                                 <Paper className="recipe-feature">
-                                    {recipe.data.readyInMinutes} mins
+                                <Typography
+                                        component="span"
+                                        align="center"
+                                        gutterBottom
+                                    >
+                                        {recipe.data.readyInMinutes} mins
+                                    </Typography>
                                     </Paper>
                                     <Typography
                                         component="p"
@@ -90,8 +121,13 @@ function Recipe(props) {
                                 </Grid>
                                 <Grid item xs={4}>
                                 <Paper className="recipe-feature">
-
+                                <Typography
+                                        component="span"
+                                        align="center"
+                                        gutterBottom
+                                    >
                                     {recipe.data.healthScore}
+                                    </Typography>
                                     </Paper>
                                     <Typography
                                         component="p"
@@ -104,8 +140,13 @@ function Recipe(props) {
                                 
                                 <Grid item xs={4}>
                                 <Paper className="recipe-feature">
+                                    <Typography
+                                        component="span"
+                                        align="center"
+                                        gutterBottom
+                                    >
                                     {recipe.data.servings}
-                                    </Paper>
+                                    </Typography></Paper>
                                     <Typography
                                         component="p"
                                         align="center"
@@ -116,7 +157,7 @@ function Recipe(props) {
                                 </Grid>
 
                             </Grid>
-
+                          
                         <Grid className="mb-4" gutterBottom container>
                             <Typography
                                 component="h4"
@@ -126,8 +167,13 @@ function Recipe(props) {
                                 Ingredients
                             </Typography>
                             <Grid className="mb-4" gutterBottom container>
+                            <Typography
+                                component="p"
+                                gutterBottom
+                            >
                             {recipe.data.extendedIngredients !== undefined ? renderIngredients(recipe.data.extendedIngredients):null}
-                            </Grid>
+                            </Typography>
+                        </Grid>
                         </Grid>
 
                         <Grid className="mb-4" gutterBottom container>

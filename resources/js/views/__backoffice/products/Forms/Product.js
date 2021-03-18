@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
@@ -19,11 +19,19 @@ import {
 import { MuiPickersUtilsProvider, DatePicker } from 'material-ui-pickers';
 import MomentUtils from '@date-io/moment';
 
+
 const Profile = props => {
-    const { classes, values, handleSubmit } = props;
+    const { classes,  handleSubmit } = props;
+    const [values, setValues] = useState(props.values);
+
+
+    useEffect(() => {
+        setValues(props.values);
+    }, [props.values])
 
     return (
         <Formik
+            enableReinitialize
             initialValues={values}
             validationSchema={Yup.object().shape({
                 label: Yup.string().required(
@@ -31,11 +39,6 @@ const Profile = props => {
                         attribute: 'label',
                     }),
                 ),
-                // experiation_date: Yup.date().required(
-                //     Lang.get('validation.required', {
-                //         attribute: 'experiation_date',
-                //     }),
-                // ),
                 metric: Yup.string().required(
                     Lang.get('validation.required', {
                         attribute: 'metric',
@@ -193,7 +196,7 @@ const Profile = props => {
                                         name="experiation_date"
                                         label="Experiation date"
                                         placeholder="Please pick the experiation date"
-                                        value={values.experiation_date}
+                                        value={labelexperiation_date}
                                         onChange={date =>
                                             setFieldValue('experiation_date', date)
                                         }
