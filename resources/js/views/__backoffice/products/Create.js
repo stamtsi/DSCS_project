@@ -8,6 +8,7 @@ import {
     Typography,
     Button,
     withStyles,
+    Grid,
 } from '@material-ui/core';
 import { ReactMic } from 'react-mic';
 
@@ -17,6 +18,8 @@ import { LinearIndeterminate } from '../../../ui/Loaders';
 import { Master as MasterLayout } from '../layouts';
 import Camera from 'react-html5-camera-photo';
 import { Product as ProductForm } from './Forms';
+import AddProductImg from '../../../../img/add_products.png';
+
 
 function Create(props) {
     const [loading, setLoading] = useState(false);
@@ -135,12 +138,23 @@ function Create(props) {
         <MasterLayout
             {...other}
             pageTitle="Create a product"
-            tabs={[]}
+            // tabs={[]}
             message={message}
         >
-            <div className={classes.pageContentWrapper}>
+            <div className={classes.pageContentWrapper} style={{'marginTop':0}}>
                 {loading && <LinearIndeterminate />}
-
+                <Grid container
+                        direction="row"
+                        alignItems="center"
+                        justify="center"
+                        style={{
+                            'backgroundImage':`url(${AddProductImg})`,
+                            }
+                        }
+                        className="image-background"
+                        wrap="nowrap">
+                    {/* <img src={AddProductImg}/> */}
+                </Grid>
                 <Paper>
                     <div className={classes.pageContent}>
                     <Typography
@@ -162,17 +176,35 @@ function Create(props) {
 
                         {renderForm()}
                     </div>
-                    <ReactMic
+                    <Grid container
+                        direction="row"
+                        alignItems="center"
+                        justify="center"
+                        wrap="nowrap">
+                        <ReactMic
                         record={record}
                         className="sound-wave"
                         onStop={onStop}
                         onData={onData}
                         strokeColor="primary"
-                        backgroundColor="#424242" />
+                        backgroundColor="#424242" />  
+                    </Grid>
+                    <Grid container
+                        direction="row"
+                        alignItems="center"
+                        justify="center"
+                        wrap="nowrap"
+                        style={
+                            {
+                                "paddingTop":20,
+                                "paddingBottom":20
+                            }
+                        }>
+
                         {record === false ? <Button className="mdc-button mdc-button--raised" onClick={startRecording} variant="contained" color="primary" type="button">Start</Button> : null }
                         {record === true ? <Button className="mdc-button mdc-button--raised" onClick={stopRecording} variant="contained" color="secondary" type="button">Stop</Button> :null}
-                    {/* 
-                        <Camera
+                    </Grid>
+                        {/* <Camera
                         onTakePhoto = { (dataUri) => { handleTakePhoto(dataUri); } }
                         /> */}
                 </Paper>

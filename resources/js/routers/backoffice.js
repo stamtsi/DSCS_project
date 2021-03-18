@@ -1,8 +1,15 @@
 import { Home } from '../views/__backoffice';
 import * as Settings from '../views/__backoffice/settings';
 import * as Products from '../views/__backoffice/products';
+import * as Recipe from '../views/__backoffice/recipes';
+
 
 const resources = [
+    {
+        name: 'recipes.show',
+        path: '/recipes/:id',
+        component: Recipe.Recipe,
+    },
     {
         name: 'products.edit',
         path: '/products/:id/edit',

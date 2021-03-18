@@ -959,3 +959,7 @@
 83.81.165.60 - - [17/Mar/2021:10:31:29 +0000] "GET /js/app.js HTTP/1.1" 404 6609 "https://dscs5.phitech.dev/input-speech" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:84.0) Gecko/20100101 Firefox/84.0"
 83.81.165.60 - - [17/Mar/2021:10:31:29 +0000] "GET /css/app.css HTTP/1.1" 404 6609 "https://dscs5.phitech.dev/input-speech" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:84.0) Gecko/20100101 Firefox/84.0"
 83.81.165.60 - - [17/Mar/2021:10:31:29 +0000] "GET /favicon.ico HTTP/1.1" 200 - "https://dscs5.phitech.dev/input-speech" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:84.0) Gecko/20100101 Firefox/84.0"
+84.85.12.1 - - [18/Mar/2021:07:20:18 +0000] "GET / HTTP/1.1" 200 2950 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:86.0) Gecko/20100101 Firefox/86.0"
+84.85.12.1 - - [18/Mar/2021:07:20:18 +0000] "GET /js/backoffice.bundle.ef24091ee1d82915ce3e.js HTTP/1.1" 200 146411 "https://dscs5.phitech.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:86.0) Gecko/20100101 Firefox/86.0"
+84.85.12.1 - - [18/Mar/2021:07:20:20 +0000] "GET /apple-touch-icon.png HTTP/1.1" 404 6609 "https://dscs5.phitech.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:86.0) Gecko/20100101 Firefox/86.0"
+84.85.12.1 - - [18/Mar/2021:07:20:18 +0000] "GET /js/vendor.bundle.048b22ec5816726a2420.js HTTP/1.1" 200 15983156 "https://dscs5.phitech.dev/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:86.0) Gecko/20100101 Firefox/86.0"

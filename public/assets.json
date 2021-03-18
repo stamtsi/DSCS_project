@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "js/0.js": "js/0.bundle.d54b842a7ee3fb225999.js",
   "js/1.js": "js/1.bundle.230296b67748a86c00d6.js",
   "js/10.js": "js/10.bundle.0e38dc16648f7042ffc5.js",
@@ -6,16 +7,29 @@
   "js/12.js": "js/12.bundle.2033e2b87289a705edfb.js",
   "js/13.js": "js/13.bundle.d34c57e9a72fe37f44c8.js",
   "js/14.js": "js/14.bundle.799046d2db2f5562f880.js",
+=======
+  "js/0.js": "js/0.bundle.3dae546c2dc4b88710f2.js",
+  "js/1.js": "js/1.bundle.230296b67748a86c00d6.js",
+  "js/10.js": "js/10.bundle.0e38dc16648f7042ffc5.js",
+  "js/11.js": "js/11.bundle.44b1145efbb16903efde.js",
+  "js/12.js": "js/12.bundle.c40bd5bebb420749819b.js",
+  "js/13.js": "js/13.bundle.4912e47cdbec02b7e971.js",
+>>>>>>> origin/main
   "js/15.js": "js/15.bundle.7bd5e4c6c504ca44ff24.js",
   "js/16.js": "js/16.bundle.1b1b64a0dd7d76caf2cc.js",
   "js/17.js": "js/17.bundle.c22a44ca1a116971b89e.js",
   "js/18.js": "js/18.bundle.7b34804a6bdc68651191.js",
   "js/19.js": "js/19.bundle.8c65da58dacb12c252ef.js",
+<<<<<<< HEAD
   "js/2.js": "js/2.bundle.6a996a30f5e81d9b1a91.js",
+=======
+  "js/2.js": "js/2.bundle.396ecbebb05bd179c225.js",
+>>>>>>> origin/main
   "js/20.js": "js/20.bundle.bacc3ddb9fed7dc8f89e.js",
   "js/21.js": "js/21.bundle.459d05ab83f203542cb9.js",
   "js/22.js": "js/22.bundle.f7dc7e101d52705dc4a0.js",
   "js/23.js": "js/23.bundle.bf4b27756fe1a6d337b2.js",
+<<<<<<< HEAD
   "js/24.js": "js/24.bundle.d726f970f9e246c99c6b.js",
   "js/25.js": "js/25.bundle.3b6d0b02c0ef68973963.js",
   "js/26.js": "js/26.bundle.18a86a77aea27848421f.js",
@@ -38,4 +52,31 @@
   "js/9.js": "js/9.bundle.3942a48f54f7cb28ae0c.js",
   "js/backoffice.js": "js/backoffice.bundle.ef24091ee1d82915ce3e.js",
   "js/vendor.js": "js/vendor.bundle.048b22ec5816726a2420.js"
+=======
+  "js/24.js": "js/24.bundle.0195b8f346ca45ce89bf.js",
+  "js/25.js": "js/25.bundle.3b6d0b02c0ef68973963.js",
+  "js/26.js": "js/26.bundle.18a86a77aea27848421f.js",
+  "js/27.js": "js/27.bundle.77726801e6f801f32e50.js",
+  "js/28.js": "js/28.bundle.ac6263d1e11e62fe309e.js",
+  "js/29.js": "js/29.bundle.3f0409c7fdbad8bce4ba.js",
+  "js/3.js": "js/3.bundle.a5924de593093fefd945.js",
+  "js/30.js": "js/30.bundle.d179b0ad263db5065a3d.js",
+  "js/31.js": "js/31.bundle.8ab495d4429c04e97638.js",
+  "js/32.js": "js/32.bundle.2994bd3a0f728e1cdeaa.js",
+  "js/33.js": "js/33.bundle.877b026716393a6e5e39.js",
+  "js/34.js": "js/34.bundle.6dad1613625848c926da.js",
+  "js/35.js": "js/35.bundle.f040b2bfb3e021324bad.js",
+  "js/36.js": "js/36.bundle.35022050a76a8dea700f.js",
+  "js/37.js": "js/37.bundle.be715d0a0cd1dc363819.js",
+  "js/38.js": "js/38.bundle.bed216993b2d38592faf.js",
+  "js/39.js": "js/39.bundle.dca987a374bec9539010.js",
+  "js/4.js": "js/4.bundle.0873bbc991a43be79487.js",
+  "js/5.js": "js/5.bundle.72a6b2b580936e6c455b.js",
+  "js/6.js": "js/6.bundle.8d38d9361b4eb8897a3a.js",
+  "js/7.js": "js/7.bundle.b1fcb2fb93c351a8ed04.js",
+  "js/8.js": "js/8.bundle.f2233a0087d453e030cb.js",
+  "js/9.js": "js/9.bundle.3942a48f54f7cb28ae0c.js",
+  "js/backoffice.js": "js/backoffice.bundle.629cafde7fa381bd5249.js",
+  "js/vendor.js": "js/vendor.bundle.06f0382afe4c7e98d347.js"
+>>>>>>> origin/main
 }

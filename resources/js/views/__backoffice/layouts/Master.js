@@ -107,15 +107,15 @@ function Master(props) {
                 backgroundColor: nightMode ? '#303030' : '#FAFAFA',
             }}
         >
-            <div className={classes.breadcrumbWrapper}>
+             {/*<div className={classes.breadcrumbWrapper}>
                 <Breadcrumbs
                     segments={location.pathname
                         .split('/')
                         .splice(1)
                         .filter(segment => segment.length > 0)}
                     blacklistedSegments={['resources', 'analytics']}
-                />
-            </div>
+                /> 
+            </div>*/}
         </AppBar>
     );
 
